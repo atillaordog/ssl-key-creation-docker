@@ -1,0 +1,13 @@
+version: '2.1'
+services:
+  keyinit:
+    build:
+      context: ./keyinit
+      dockerfile: Dockerfile
+      args:
+        KEYINIT_KEYGEN_CN: "my_CN"
+        KEYINIT_ALTERNATIVE_NAMES_DNS: "test_domain"
+        KEYINIT_ALTERNATIVE_NAMES_IP: "127.0.0.1"
+    container_name: keyinit
+    volumes:
+      - ./keys:/etc/ssl/keys:rw
